@@ -1,0 +1,64 @@
+@import './base/reset';
+@import './base/global';
+@import './base/vars';
+
+body {
+	font-family: $ff-body;
+	font-size: $fs-body;
+	color: $clr-primary-400;
+}
+
+.button {
+	cursor: pointer;
+	text-decoration: none;
+	border: none;
+	border-radius: 100vmax;
+	padding: 1em 2.5em;
+	font-weight: $fw-bold;
+	font-size: $fs-button;
+	color: $clr-neutral-100;
+	background-color: $clr-accent-400;
+	box-shadow: 0 1.125em 1em -1em $clr-accent-400;
+	transition: all 0.3s;
+
+	&[data-type='inverted'] {
+		background-color: $clr-neutral-100;
+		color: $clr-accent-400;
+
+		&:is(:hover, :focus) {
+			color: $clr-accent-300;
+		}
+	}
+
+	&:is(:hover, :focus) {
+		background-color: $clr-accent-300;
+	}
+}
+
+.primary-header {
+	padding-top: $size-700;
+}
+
+.nav-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+.mobile-nav-toggle {
+	display: none;
+}
+
+.nav-list a {
+	text-decoration: none;
+	color: $clr-primary-400;
+
+	&:hover,
+	&:focus {
+		text-decoration: none;
+		color: $clr-accent-400;
+	}
+}
+
+@import './base/media';

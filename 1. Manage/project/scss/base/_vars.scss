@@ -1,0 +1,15 @@
+.container {
+	$max-width: 1110px; // И эти переменные будут работать в локальной области видимости, то есть только в .container
+	$padding: 1rem;
+
+	width: min(
+		$max-width,
+		100% - ($padding * 2)
+	); // чтоб padding с обоих сторон был по 16 а не по 8(по этому умножили на 2), и можно писать без calc()
+	margin-inline: auto; // Это как margin 0 auto
+}
+
+.even-columns {
+	display: grid;
+	gap: 1rem;
+}

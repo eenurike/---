@@ -1,0 +1,76 @@
+@media (min-width: 50em) {
+	// -> 800px. Почему лучше использовать em, это единственное значение которое работает согласованно во всех браузерах при увлечении и уменьшении. Даже если изменить корневой размер шрифта то ничего не изменится
+
+	$fs-body: $fs-500;
+	$fs-primary-heading: $fs-900;
+	$fs-secondary-heading: $fs-800;
+	$fs-nav: $fs-300;
+
+	.even-columns {
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+	}
+
+	.nav-list {
+		display: flex;
+		gap: clamp($size-400, 3vw, 2.5rem);
+		font-weight: $fw-bold;
+
+		a {
+			text-decoration: none;
+		}
+	}
+}
+
+@media (max-width: 50em) {
+	.primary-navigation {
+		display: none;
+
+		padding: $size-700;
+		position: fixed;
+		inset: 7rem $size-400 auto;
+		background: $clr-neutral-100;
+		border-radius: $size-100;
+		// box-shadow: 0 0 0 100vmax rgb(0, 0, 0, 0.75);
+	}
+
+	.primary-navigation[data-visible] {
+		display: block;
+	}
+
+	.primary-header[data-overlay]::before {
+		content: '';
+		position: fixed;
+		// top: 0;
+		// width: 100%;
+		inset: 0;
+		// height: 1000px;
+		background-image: linear-gradient(rgb(0 0 0 / 0), rgba(0 0 0 / 0.8));
+	}
+
+	.nav-list {
+		display: grid;
+		gap: $size-600;
+		text-align: center;
+		font-weight: $fw-bold;
+	}
+
+	.mobile-nav-toggle .icon-close {
+		display: none;
+	}
+
+	.mobile-nav-toggle {
+		display: block;
+		position: fixed;
+		cursor: pointer;
+		border: none;
+		background-color: transparent;
+		padding: 0.5em;
+		top: 6%;
+		right: 1%;
+	}
+
+	.button-hidden {
+		display: none;
+	}
+}
