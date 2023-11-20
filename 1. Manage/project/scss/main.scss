@@ -8,6 +8,17 @@ body {
 	color: $clr-primary-400;
 }
 
+input[type='email'] {
+	border-radius: 100vmax;
+	border: none;
+	height: 2.575rem;
+	// width: min(15.625rem);
+	// width: 100%;
+	// max-width: 15.625rem;
+	width: clamp(9.375rem, 50vw, 250px);
+	margin-right: 0.313rem;
+}
+
 .button {
 	cursor: pointer;
 	text-decoration: none;
@@ -26,12 +37,16 @@ body {
 		color: $clr-accent-400;
 
 		&:is(:hover, :focus) {
-			color: $clr-accent-300;
+			color: $clr-neutral-100;
 		}
 	}
 
 	&:is(:hover, :focus) {
 		background-color: $clr-accent-300;
+	}
+
+	&[data-shadow='none'] {
+		box-shadow: none;
 	}
 }
 
@@ -58,6 +73,67 @@ body {
 	&:focus {
 		text-decoration: none;
 		color: $clr-accent-400;
+	}
+}
+
+.cta {
+	grid-template-columns: 1fr auto;
+	align-items: center;
+
+	p {
+		max-width: 20ch;
+	}
+}
+
+section:last-of-type {
+	background-image: url('../images/bg-simplify-section-desktop.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 100% 40%;
+}
+
+.footer-nav a {
+	color: $clr-neutral-100;
+	text-decoration: none;
+
+	&:is(:hover, :focus) {
+		color: $clr-accent-400;
+	}
+}
+
+.footer-nav {
+	columns: 2;
+	gap: max(10vw, 2rem);
+}
+
+.social-list {
+	display: flex;
+	align-items: flex-start;
+	gap: $size-300;
+}
+
+.social-icon {
+	width: $size-600;
+	fill: $clr-neutral-100;
+	// aspect-ratio: 1;
+	width: 32px;
+	height: 32px;
+
+	&:is(:hover, :focus) {
+		fill: $clr-accent-400;
+	}
+}
+
+form {
+	position: relative;
+	height: 100%;
+	white-space: nowrap;
+	text-align: right;
+
+	p {
+		position: absolute;
+		bottom: 0;
+		right: 0;
 	}
 }
 

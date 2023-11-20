@@ -151,10 +151,31 @@ svg {
   gap: 1rem;
 }
 
+:where(.flow :not(:first-child)) {
+  margin-top: var(--flow-spacer, 3em);
+}
+
+p:not([class]) {
+  opacity: 0.7;
+  max-width: 32ch;
+}
+
+p[data-width=wide] {
+  max-width: 42ch;
+}
+
 body {
   font-family: "Be Vietnam Pro", sans-serif;
   font-size: 0.875rem;
   color: hsl(228, 39%, 23%);
+}
+
+input[type=email] {
+  border-radius: 100vmax;
+  border: none;
+  height: 2.575rem;
+  width: clamp(9.375rem, 50vw, 250px);
+  margin-right: 0.313rem;
 }
 
 .button {
@@ -175,10 +196,13 @@ body {
   color: hsl(12, 88%, 59%);
 }
 .button[data-type=inverted]:is(:hover, :focus) {
-  color: hsl(12, 88%, 75%);
+  color: hsl(0, 0%, 100%);
 }
 .button:is(:hover, :focus) {
   background-color: hsl(12, 88%, 75%);
+}
+.button[data-shadow=none] {
+  box-shadow: none;
 }
 
 .primary-header {
@@ -205,10 +229,70 @@ body {
   color: hsl(12, 88%, 59%);
 }
 
+.cta {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.cta p {
+  max-width: 20ch;
+}
+
+section:last-of-type {
+  background-image: url("../images/bg-simplify-section-desktop.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 40%;
+}
+
+.footer-nav a {
+  color: hsl(0, 0%, 100%);
+  text-decoration: none;
+}
+.footer-nav a:is(:hover, :focus) {
+  color: hsl(12, 88%, 59%);
+}
+
+.footer-nav {
+  -moz-columns: 2;
+       columns: 2;
+  gap: max(10vw, 2rem);
+}
+
+.social-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.social-icon {
+  width: 2rem;
+  fill: hsl(0, 0%, 100%);
+  width: 32px;
+  height: 32px;
+}
+.social-icon:is(:hover, :focus) {
+  fill: hsl(12, 88%, 59%);
+}
+
+form {
+  position: relative;
+  height: 100%;
+  white-space: nowrap;
+  text-align: right;
+}
+form p {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 @media (min-width: 50em) {
   .even-columns {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+  }
+  .numbered-items {
+    justify-self: end;
   }
   .nav-list {
     display: flex;
@@ -218,12 +302,27 @@ body {
   .nav-list a {
     text-decoration: none;
   }
+  .social-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .social-icon {
+    width: 2rem;
+  }
+  input[type=email] {
+    width: clamp(9.375rem, 20vmax, 15.625rem);
+  }
+  .even-columns.footer-wrapper {
+    grid-template-columns: 1.5fr 2fr 1fr;
+  }
 }
 @media (max-width: 50em) {
   .primary-navigation {
     display: none;
     padding: 3rem;
     position: fixed;
+    z-index: 1;
     inset: 7rem 1rem auto;
     background: hsl(0, 0%, 100%);
     border-radius: 0.25rem;
@@ -234,6 +333,7 @@ body {
   .primary-header[data-overlay]::before {
     content: "";
     position: fixed;
+    z-index: 1;
     inset: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
   }
@@ -250,6 +350,7 @@ body {
     display: block;
     position: fixed;
     cursor: pointer;
+    z-index: 1;
     border: none;
     background-color: transparent;
     padding: 0.5em;
@@ -258,5 +359,45 @@ body {
   }
   .button-hidden {
     display: none;
+  }
+  .cta {
+    grid-template-columns: auto;
+    justify-items: center;
+    text-align: center;
+  }
+  .cta p {
+    max-width: 12ch;
+  }
+  section:last-of-type {
+    background-position: 20% 40%;
+  }
+  .footer-wrapper {
+    justify-items: center;
+    gap: 3rem;
+    grid-template-areas: "form " "nav" "social";
+  }
+  .footer-wrapper .social-wrapper {
+    grid-area: social;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: calc(4rem + 21px);
+  }
+  .footer-wrapper div:nth-child(2) {
+    grid-area: nav;
+  }
+  .footer-wrapper div:last-child {
+    grid-area: form;
+  }
+  .footer-wrapper {
+    position: relative;
+  }
+  form {
+    position: static;
+  }
+  form p {
+    translate: 50%;
+    right: 50%;
   }
 }/*# sourceMappingURL=main.css.map */
