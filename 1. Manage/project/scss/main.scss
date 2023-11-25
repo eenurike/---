@@ -137,4 +137,39 @@ form {
 	}
 }
 
+ul.numbered-items {
+	counter-reset: count;
+}
+ul.numbered-items li {
+	counter-increment: count;
+}
+ul.numbered-items div {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	align-items: center;
+	gap: $size-400;
+}
+
+ul.numbered-items p {
+	grid-column: 2 / 2;
+}
+ul.numbered-items div::before {
+	content: '0' counter(count);
+	background-color: $clr-accent-400;
+	color: $clr-neutral-100;
+	font-weight: $fw-bold;
+	padding: $size-200 $size-500;
+	border-radius: 100vmax;
+	grid-column: 1 / 2;
+	grid-row: 1 / 2;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+ul.numbered-items h3 {
+	line-height: 1;
+	padding: 5px 0;
+}
+
 @import './base/media';
